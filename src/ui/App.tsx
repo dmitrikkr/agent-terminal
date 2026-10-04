@@ -42,6 +42,18 @@ export function App() {
           onToken: (token) => {
             setStreamingText((prev) => prev + token);
           },
+
+          onComplete: (response) => {
+            if (response) {
+              setMessages((prev) => [
+                ...prev,
+                { role: "assistant", content: response },
+              ]);
+            }
+            setStreamingText("");
+            setActiveToolCalls([]);
+          },
+
           onToolCallStart: (name, args) => {
             setActiveToolCalls((prev) => [
               ...prev,
@@ -53,6 +65,7 @@ export function App() {
               },
             ]);
           },
+
           onToolCallEnd: (name, result) => {
             setActiveToolCalls((prev) =>
               prev.map((tc) =>
@@ -61,16 +74,6 @@ export function App() {
                   : tc,
               ),
             );
-          },
-          onComplete: (response) => {
-            if (response) {
-              setMessages((prev) => [
-                ...prev,
-                { role: "assistant", content: response },
-              ]);
-            }
-            setStreamingText("");
-            setActiveToolCalls([]);
           },
         });
 
