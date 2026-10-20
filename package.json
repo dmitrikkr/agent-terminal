@@ -1,6 +1,17 @@
 {
   "name": "agent-code-cycle",
   "version": "1.0.0",
+  "description": "ai agent cli tool",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnydrm/agent-terminal.git"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "llm"
+  ],
   "type": "module",
   "scripts": {
     "dev": "tsx watch --env-file=.env src/index.ts",
@@ -9,6 +20,8 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
